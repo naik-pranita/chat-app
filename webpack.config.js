@@ -16,6 +16,11 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({template: './public/index.html'}),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'common.vendor.js',
+            minChunks: 2
+        })
     ],
     devtool: 'inline-source-map',
     module: {
