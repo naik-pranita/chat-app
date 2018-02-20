@@ -1,5 +1,6 @@
 var PATH = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var basePath = PATH.resolve(__dirname + '/src/');
 var outputPath = PATH.resolve(__dirname + '/public/');
@@ -13,7 +14,8 @@ module.exports = {
         path: PATH.join(outputPath + '/build/')
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({template: './public/index.html'}),
     ],
     devtool: 'inline-source-map',
     module: {
@@ -24,10 +26,11 @@ module.exports = {
         }]
     },
     devServer: {
-        contentBase: outputPath,
+        contentBase: PATH.join(outputPath + '/build/'),
         compress: true,
         port: 9000,
-        hot: true
+        hot: true,
+        inline: true,
     },
     resolve: {
         extensions: ['.js', '.es6']
