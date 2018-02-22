@@ -15,11 +15,13 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({template: './public/index.html'}),
+        new HtmlWebpackPlugin({ template: './public/index.html' }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'common.vendor.js',
-            minChunks: 2
+            minChunks: function (module) {
+                return module.context && module.context.includes('node_modules')
+            }
         })
     ],
     devtool: 'inline-source-map',
@@ -27,7 +29,10 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             exclude: /node_nodules/,
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+                compact: true
+            }
         }]
     },
     devServer: {
