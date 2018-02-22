@@ -33,6 +33,11 @@ module.exports = {
             options: {
                 compact: true
             }
+        },
+        {
+            test: /\.(s*)css$/,
+            exclude: /node_modules/,
+            loaders: 'style-loader!css-loader!sass-loader'
         }]
     },
     devServer: {
