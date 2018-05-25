@@ -1,5 +1,6 @@
 import styles from './app.scss';
 
-const test = 'It Works!!!';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-document.write(test);
+ReactDOM.render(<div>Hello</div>, document.getElementById('app'))

@@ -13,7 +13,7 @@ module.exports = __webpack_require__(329);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var _app=__webpack_require__(330);var _app2=_interopRequireDefault(_app);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var test='It Works!!!';document.write(test);
+var _app=__webpack_require__(330);var _app2=_interopRequireDefault(_app);var _react=__webpack_require__(341);var _react2=_interopRequireDefault(_react);var _reactDom=__webpack_require__(350);var _reactDom2=_interopRequireDefault(_reactDom);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}_reactDom2.default.render(_react2.default.createElement('div',null,'Hello'),document.getElementById('app'));
 
 /***/ }),
 
