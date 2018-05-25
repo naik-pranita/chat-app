@@ -1,6 +1,5 @@
 var PATH = require('path');
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var basePath = PATH.resolve(__dirname + '/src/');
 var outputPath = PATH.resolve(__dirname + '/public/');
@@ -11,11 +10,9 @@ module.exports = {
     },
     output: {
         filename: '[name].bundle.js',
-        path: PATH.join(outputPath + '/build/')
+        path: PATH.join(outputPath)
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({ template: './public/index.html' }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'common.vendor.js',
@@ -24,7 +21,6 @@ module.exports = {
             }
         })
     ],
-    devtool: 'inline-source-map',
     module: {
         loaders: [{
             test: /\.js$/,
@@ -39,13 +35,6 @@ module.exports = {
             exclude: /node_modules/,
             loaders: 'style-loader!css-loader!sass-loader'
         }]
-    },
-    devServer: {
-        contentBase: PATH.join(outputPath + '/build/'),
-        compress: true,
-        port: 9000,
-        hot: true,
-        inline: true,
     },
     resolve: {
         extensions: ['.js', '.es6']
