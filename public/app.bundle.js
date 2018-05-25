@@ -4,27 +4,24 @@ webpackJsonp([0],{
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(126);
-module.exports = __webpack_require__(328);
+module.exports = __webpack_require__(329);
 
-
-/***/ }),
-
-/***/ 328:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_scss__ = __webpack_require__(329);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__app_scss__);
-const test='It Works!!!';document.write(test);
 
 /***/ }),
 
 /***/ 329:
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+var _app=__webpack_require__(330);var _app2=_interopRequireDefault(_app);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var test='It Works!!!';document.write(test);
 
-var content = __webpack_require__(330);
+/***/ }),
+
+/***/ 330:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(331);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -71,10 +68,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 330:
+/***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(331)(false);
+exports = module.exports = __webpack_require__(340)(false);
 // imports
 
 
