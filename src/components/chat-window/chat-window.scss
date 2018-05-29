@@ -1,0 +1,31 @@
+.chat-item-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-item-container-me {
+    flex-wrap: wrap-reverse;
+}
+
+.chat-item-container-other {
+    flex-wrap: wrap;
+}
+
+.panel-default {
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+.panel-default-me {
+    flex-direction: row-reverse;
+}
+
+.panel-default-other {
+    flex-direction: row;
+}
+
+.panel-heading {
+    margin-right: 10px;
+    border-radius: 24px;
+}   

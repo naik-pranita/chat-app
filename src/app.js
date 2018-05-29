@@ -3,4 +3,7 @@ import styles from './app.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<div>Hello</div>, document.getElementById('app'))
+import Home from './components/home/Home';
+
+ReactDOM.render(<Home />, document.getElementById('app'));
+

@@ -1,3 +1,6 @@
-body{
-    background-color: #efefef;
+@import './components/chat-window/chat-window';
+@import './components/chat-form/chat-form';
+
+body {
+    background-color: #fff;
 }
