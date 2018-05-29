@@ -2,7 +2,7 @@ var PATH = require('path');
 var webpack = require('webpack');
 
 var basePath = PATH.resolve(__dirname + '/src/');
-var outputPath = PATH.resolve(__dirname + '/public/');
+var outputPath = PATH.resolve(__dirname + '/public/assets/');
 
 module.exports = {
     entry: {
