@@ -1,0 +1,10 @@
+{
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+        "**/*.{js,jsx}",
+        "!**/node_modules/**",
+        "!**/public/**"
+      ],
+    "setupFiles": ["<rootDir>/enzyme.config.js"],
+    "testPathIgnorePatterns" : ["<rootDir>/public/", "<rootDir>/node_modules/", "<rootDir>/src/server/"]
+}
