@@ -11,11 +11,12 @@ export default class Home extends Component {
         this.socket = io.connect('http://localhost:9090');
         this.state = {
             chat: [],
-            msg: ''
+            avatar: '',
+            typing: '',
+            connectionId: ''
         };
 
-        this.avatarValue = React.createRef();
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.emitChat = this.emitChat.bind(this);
         this.onKeyUp = this.onKeyUp.bind(this);
     }
 
@@ -24,20 +25,24 @@ export default class Home extends Component {
     }
 
     setUpEventListeners() {
-        this.socket.on('chat', (data) => {
-            let chatArr = this.state.chat;
-            chatArr.push(data);
-            this.setState({ chat: this.translateData(chatArr), msg: '' });
+        this.socket.on('connection-success', (connectionId) => {
+            this.setState({ connectionId });
         });
 
-        this.socket.on('typing', (msg) => {
-            this.setState({ msg });
-        })
+        this.socket.on('chat', (data) => {
+            let chat = this.state.chat;
+            chat.push(data);
+            this.setState({ chat: this.translateData(chat), typing: '' });
+        });
+
+        this.socket.on('typing', (typing) => {
+            this.setState({ typing });
+        });
     }
 
     translateData(chat) {
         return chat.map(item => {
-            if (item.avatar === this.avatarValue.value) {
+            if (item.id === this.state.connectionId) {
                 item.who = 'me';
             } else {
                 item.who = 'other'
@@ -46,24 +51,26 @@ export default class Home extends Component {
         });
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        this.socket.emit('chat', { avatar: e.target.elements[0].value, chat: e.target.elements[1].value });
-        e.target.elements[1].value = '';
+    emitEvent(eventName, data, callback) {
+        this.socket.emit(eventName, data, callback);
     }
 
-    onKeyUp(e) {
-        if (![9, 13].includes(e.keyCode)) {
-            this.socket.emit('typing', this.avatarValue.value);
-        }
+    emitChat(data) {
+        this.emitEvent('chat', data);
+    }
+
+    onKeyUp(avatar) {
+        this.emitEvent('typing', avatar, (avatar) => {
+            this.setState({ avatar });
+        });
     }
 
     render() {
         return (
             <div>
-                <ChatWindow message={this.state.msg} chat={this.state.chat} />
-                <ChatForm onKeyUp={this.onKeyUp} onSubmit={this.handleSubmit} inputRef={ref => { this.avatarValue = ref; }} />
-            </div>)
+                <ChatWindow message={this.state.typing} chat={this.state.chat} />
+                <ChatForm onKeyUp={this.onKeyUp} onSubmit={this.emitChat} emitEvent={this.emitEvent}/>
+            </div>
+        )
     }
-
 }
